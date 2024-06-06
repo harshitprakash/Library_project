@@ -16,7 +16,7 @@ class BorrowController extends Controller
     public function index()
     {
         //
-        $data=Borrow::all();
+        $data=Borrow::with('book')->get();
         return view('admin.borrow_request',compact('data'));
     }
 

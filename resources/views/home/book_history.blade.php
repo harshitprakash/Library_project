@@ -42,20 +42,20 @@ https://templatemo.com/tm-577-liberty-market
     <div class="container">
         <div class="row">
 
-        <div class="card mt-10">
-        <div class="text-center">
-                @if(session()->has('message'))
-                    <div class="alert alert-success">
-                        {{session()->get('message')}}
+        <div class="card mt-10  bg-dark">
+                <div class="text-center">
+                        @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{session()->get('message')}}
 
-                            <button type="button" class="close" data-bs-dismiss="alert">X</button>
-                    </div>
-                @endif
-        </div> 
+                                    <button type="button" class="close" data-bs-dismiss="alert">X</button>
+                            </div>
+                        @endif
+                </div> 
                 <div class="card-header">
                 </div>
                 <div class="card-body"> 
-                    <table class="table">
+                    <table class="table text-white">
                     <thead>
                         <tr>
                             <th scope="col">id</th>
@@ -67,17 +67,17 @@ https://templatemo.com/tm-577-liberty-market
 
                         </tr>
                     </thead>
-                    @foreach($data as $data)
+                    @foreach($data as $borrow)
                     <tbody>
                         <tr>
-                            <th scope="row">{{$data->id}}</th>
-                            <td>{{$data->book->title}}</td>
-                            <td>{{$data->book->author_name}}</td>
-                            <td>{{$data->status}}</td>
-                            <td></td>
+                            <th scope="row">{{$borrow->id}}</th>
+                            <td>{{$borrow->book->title}}</td>
+                            <td>{{$borrow->book->author_name}}</td>
+                            <td>{{$borrow->status}}</td>
+                            <td><img src="{{ asset($borrow->book->book_img) }}" alt="" style="width:50px;height:50px;"></td>
                             <td>
-                                @if($data->status == 'Applied') 
-                                    <a href="{{route('request.cancel',$data->id)}}" class="btn btn-warning">Cancel</a>  
+                                @if($borrow->status == 'Applied') 
+                                    <a href="{{route('request.cancel',$borrow->id)}}" class="btn btn-warning">Cancel</a>  
                                     @else
                                     <span>Not Allowed</span>
                                 @endif

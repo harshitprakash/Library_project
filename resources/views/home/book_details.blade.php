@@ -66,13 +66,13 @@ https://templatemo.com/tm-577-liberty-market
         </div>
         <div class="col-lg-7">
           <div class="left-image">
-            <img src="assets/images/banner.png" alt="" style="border-radius: 20px;">
+            <img src="{{asset($book->book_img)}}" alt="" style="border-radius: 20px;">
           </div>
         </div>
         <div class="col-lg-5 align-self-center">
           <h4>{{$book->title}}</h4>
           <span class="author">
-            <img src="assets/images/author-02.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
+            <img src="{{asset($book->author_img)}}" alt="" style="max-width: 50px; border-radius: 50%;">
             <h6>{{$book->author_name}}</h6>
           </span>
           <p>{{$book->description}}</p>

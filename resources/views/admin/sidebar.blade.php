@@ -11,8 +11,8 @@
         <ul class="list-unstyled">
                 <li class="active"><a href="{{route('admin.home')}}"> <i class="icon-home"></i>Home </a></li>
                 <li><a href="{{route('index')}}"> <i class="icon-grid"></i>Category</a></li>
-                <li><a href="#dropdown" aria-expanded="false" class="dropdown-toggle" data-toggle="collapse"> <i class="icon-windows"></i>Books</a>
-                  <ul id="dropdown" class="collapse list-unstyled">
+                <li><a href="#dropdown" aria-expanded="true" class="dropdown-toggle" data-toggle="collapse"> <i class="icon-windows"></i>Books</a>
+                   <ul id="dropdown" class="collapse list-unstyled">  
                     <li><a href="{{route('add.book')}}">Add Books</a></li>
                     <li><a href="{{route('index.book')}}">Books List</a></li>
                   </ul>

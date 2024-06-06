@@ -7,7 +7,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
+                    <a href="{{route('home.index')}}" class="logo">
                         <img src="assets/images/logo.png" alt="">
                     </a>
                     <!-- ***** Logo End ***** -->
@@ -19,10 +19,8 @@
                         @if (Route::has('login'))
                                 @auth
                                 <li><a href="{{route('book.history')}}">MY History</a></li>
-                                <li>
                                 <x-app-layout>
                                 </x-app-layout>
-                                </li>
                                     @else
                                     <li><a href="{{route('login')}}">Login</a></li>
 

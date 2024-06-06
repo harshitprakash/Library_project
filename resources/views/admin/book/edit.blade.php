@@ -39,15 +39,17 @@
                             <label for="exampleInputPassword1" class="form-label">Description</label>
                             <textarea class="form-control  bg-white" name="description" id="">{{$book->description}}</textarea>
                         </div>
-                        <!-- <div class="mb-3 col-sm-6">
-                            <label for="exampleInputPassword1" class="form-label">Book Image</label>
+                        <div class="mb-3 col-sm-6">
+                        <img src="{{asset($book->book_img)}}" alt="" style="width:100px;height:100px;">
+                            <label for="exampleInputPassword1" class="form-label">Update Book Image</label>
                             <input type="file" class="form-control" name="book_img">
                         </div>
                         <div class="mb-3 col-sm-6">
-                             <label for="exampleInputPassword1" class="form-label">Author Image</label>
+                        <img src="{{asset($book->author_img)}}" alt="" style="width:100px;height:100px;">
+                             <label for="" class="form-label">Update Author Image</label>
                             <input type="file" class="form-control" name="author_img" >
-                        </div> -->
-                        
+                        </div>
+                    
                     </div>
                     <button type="submit" class="btn btn-success form-control text-white">Update</button>
                     </form>

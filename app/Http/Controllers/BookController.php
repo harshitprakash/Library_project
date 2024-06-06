@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Books;
-
+use Illuminate\support\Facades\File;
 class BookController extends Controller
 {
     /**
@@ -40,16 +40,44 @@ class BookController extends Controller
             'price' => 'required',
             'quantity' => 'required',
             'description' => 'required',
-            // 'book_img' => 'required',
-            // 'author_img' => 'required',
+            'book_img' => 'nullable|mimes:png,jpg,jpeg,webp',
+            'author_img' => 'nullable|mimes:png,jpg,jpeg',
         ]);
+       
+        if($request->hasFile('book_img')){
+            $bookpath = 'admin/img/book_image/';
+            if (!is_dir($bookpath)) 
+            {
+                mkdir($bookpath, 0777, true);
+            }
+            $file = $request->file('book_img');
+            $extention =$file->getClientOriginalExtension();
+
+            $bookfilename= time().'.'.$extention;
+
+            $file->move($bookpath,$bookfilename);
+        }
+        if($request->hasFile('author_img')){
+            $authorpath = 'admin/img/author_img/';
+            if (!is_dir($authorpath)) 
+            {
+                mkdir($authorpath, 0777, true);
+            }
+            $file = $request->file('author_img');
+            $extention =$file->getClientOriginalExtension();
+
+            $authorfilename= time().'.'.$extention;
+
+            $file->move($authorpath,$authorfilename);
+        }
         Books::create([
             'title' => $request->title,
             'author_name' => $request->author_name,
             'price' => $request->price,
             'quantity' => $request->quantity,
             'description' => $request->description,
-            'book_img' => $request->book_img,
+            'book_img' => $bookpath.$bookfilename,
+            'author_img' => $authorpath.$authorfilename,
             'category_id' => $request->category_id,
         ]);
         return redirect()->route('index.book')->with('message','Book created successfully');
@@ -88,17 +116,53 @@ class BookController extends Controller
             'price' => 'required',
             'quantity' => 'required',
             'description' => 'required',
-            // 'book_img' => 'required',
-            // 'author_img' => 'required',
+            'book_img' => 'nullable|mimes:png,jpg,jpeg',
+            'author_img' => 'nullable|mimes:png,jpg,jpeg',
             'category_id' => 'required',
         ]);
+
+        if($request->hasFile('book_img')){
+            $bookpath = 'admin/img/book_image/';
+            if (!is_dir($bookpath)) 
+            {
+                mkdir($bookpath, 0777, true);
+            }
+            $file = $request->file('book_img');
+            $extention =$file->getClientOriginalExtension();
+
+            $bookfilename= time().'.'.$extention;
+
+            $file->move($bookpath,$bookfilename);
+            if(File::exists($book->book_img)){
+                File::delete($book->book_img);
+            }
+        }
+        if($request->hasFile('author_img')){
+            $authorpath = 'admin/img/author_img/';
+            if (!is_dir($authorpath)) 
+            {
+                mkdir($authorpath, 0777, true);
+            }
+            $file = $request->file('author_img');
+            $extention =$file->getClientOriginalExtension();
+
+            $authorfilename= time().'.'.$extention;
+
+            $file->move($authorpath,$authorfilename);
+
+            if(File::exists($book->author_img)){
+                File::delete($book->author_img);
+            }
+        }
+
         $book->update([
             'title' => $request->input('title'),
             'author_name' => $request->input('author_name'),
             'price' => $request->input('price') ?? $book->price,
             'quantity' => $request->input('quantity') ?? $book->quantity,
             'description' => $request->input('description'),
-            'book_img' => $request->input('book_img'),
+            'book_img' => $bookpath . $bookfilename ?? $book->book_img,
+            'author_img' => $authorpath . $authorfilename ?? $book->author_img,
             'category_id' => $request->input('category_id')??$book->category_id, // Use the retrieved category ID
         ]);
         return redirect()->route('index.book')->with('message','Book updated successfully');

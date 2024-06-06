@@ -51,76 +51,93 @@ https://templatemo.com/tm-577-liberty-market
             <div class="col-lg-6">
                 <div class="filters">
                     <ul class="active">
-                        <li class="active">All Category</li>
+                        <li><a href="{{route('home.explore')}}"class="text-white">All Category</a></li>
                         @foreach($categories as $category)
                             <li data-filter="*"  >
-                                <a href="{{route('category.search',$category->id)}}">{{$category->cat_title}}</a> 
+                                <a href="{{route('category.search',$category->id)}}"class="text-white">{{$category->cat_title}}</a> 
                             </li>
                         @endforeach
                     </ul>
                 </div>
             </div>
-        </div>
+        
 
-        <div class="text-center">
+            <div class="text-center">
                 @if(session()->has('message'))
                     <div class="alert alert-success">
                         {{session()->get('message')}}
 
-                            <button type="button" class="close" data-bs-dismiss="alert">X</button>
+                        <button type="button" class="close" data-bs-dismiss="alert">X</button>
                     </div>
                 @endif
-            </div> 
+            </div>
+            <div class="col-12">
+                <form action="{{route('book.search')}}" class="mb-4 " method="get">
+                    @CSRF
+                    <div class="row">
+                    <div class="col-lg-10 col-8">
+                        <input type="text" class="form-control" name="search" placeholder="Search Here">
+                    </div>
+                    <div class="col-lg-2 col-4">
+                        <button class="btn btn-info form-control" type="submit" value="search">Search</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="col-12 ">
+                  @if(isset($selectedCategory))
+                    <div class="section-heading text-center">
+                          <h2><em>Selected Category : </em>{{ $selectedCategory->cat_title }}</h2>
+                    </div>
+                  @else
+                  <div class="section-heading text-center">
+                      <h2><em>All</em> Books</h2>
+                  </div>
+                  @endif
+            </div>
+            <div class="col-12">
+              <div class="row">
+              @foreach($books as $book)
+                <div class="col-lg-6 col-12">
+                  <div class="item container row">
+                      <div class="col-lg-6 col-12" >
+                        <center>
+                          <img src="{{asset($book->book_img)}}" alt="" style="border-radius: 20px;">
+                        </center>
+                      </div>
+                      <div class="col-lg-6 col-12 mt-4 ">
+                        <div>
+                              <div class="">
+                                <h6>TITLE : {{$book->title}}</h6> 
+                                <h6 class="mt-2">AUTHOR : {{$book->author_name}}</h6>
+                                <span class="mt-2">
+                                <img src="{{asset($book->author_img)}}" alt="" style="max-width: 50px; border-radius: 50%;">
+                              </span>
+                              </div>
+                              
+                              <div class="line-dec"></div>
+                              <span class="bid">
+                                Current Available<br><strong>{{$book->quantity}}</strong><br> 
+                              </span>
+                            
+                              <div class="text-button">
+                              <a href="{{route('book.details',$book->id)}}">View Item Details</a>
+                              </div>
+                                  <br>
+                              <div class="">
+                              <a href="{{route('borrow.book',$book->id)}}" class="btn btn-primary form-control">Apply to Borrow</a>
+                              </div>
+                        </div>
+                            
+                      </div>
+                  </div>
+                </div>
+              @endforeach
 
-        <form action="{{route('book.search')}}" class="mb-10" method="get">
-            @CSRF
-            <div class="row">
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="search" placeholder="Search Here">
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-info form-control" type="submit" value="search">Search</button>
-            </div>
-            </div>
-        </form>
-       
-        <div class="col-lg-12">
-          <div class="row grid">
-          @foreach($books as $book)
-            <div class="col-lg-6 currently-market-item all msc">
-              <div class="item">
-                <div class="left-image">
-                  <img src="assets/images/book1.webp" alt="" style="border-radius: 20px; min-width: 195px;">
-                </div>
-                <div class="right-content">
-                  <h4>{{$book->title}}</h4>
-                  <span class="author">
-                    <img src="assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                    <h6>{{$book->author_name}}</h6>
-                  </span>
-                  <div class="line-dec"></div>
-                  <span class="bid">
-                    Current Available<br><strong>{{$book->quantity}}</strong><br> 
-                  </span>
-                  <span class="ends">
-                    Total<br><strong>20</strong><br>
-                  </span>
-                  <div class="text-button">
-                  <a href="{{route('book.details',$book->id)}}">View Item Details</a>
-                  </div>
-                      <br>
-                  <div class="">
-                  <a href="{{route('borrow.book',$book->id)}}" class="btn btn-primary form-control">Apply to Borrow</a>
-                  </div>
-                </div>
               </div>
             </div>
-          @endforeach
-
-          </div>
         </div>
-      
-      </div>
     </div>
 </div>
   @include('home.footer')

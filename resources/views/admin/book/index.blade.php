@@ -42,8 +42,8 @@
                             <td>{{$book->price}}</td>
                             <td>{{$book->quantity}}</td>
                             <td>{{$book->description}}</td>
-                            <td>{{$book->book_img}}</td>
-                            <td>{{$book->author_img}}</td>
+                            <td><img src="{{asset($book->book_img)}}" alt="" style="width:50px;height:50px;"></td>
+                            <td><img src="{{asset($book->author_img)}}" alt="" style="width:50px;height:50px;"></td>
                             <td>{{$book->category->cat_title}}</td>
                             <td>
                                 <a href="{{route('edit.book',$book->id)}}" class="btn btn-success  ">Update</a>

@@ -10,60 +10,19 @@
                   <h2>Browse Through Book <em>Categories</em> Here.</h2>
                 </div>
               </div>
+            @foreach($categories as $category)
+            
               <div class="col-lg-2 col-sm-6">
                 <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-01.png" alt="">
-                  </div>
-                  <h4>Motivational</h4>
-                  
+                    <a href="{{ route('category.search', $category->id) }}">
+                      <div class="icon">
+                        <img src="assets/images/icon-01.png" alt="">
+                      </div>
+                      <h4>{{$category->cat_title}}</h4>
+                    </a>                  
                 </div>
               </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-02.png" alt="">
-                  </div>
-                  <h4>Money</h4>
-                  
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-03.png" alt="">
-                  </div>
-                  <h4>Psychological</h4>
-                  
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-04.png" alt="">
-                  </div>
-                  <h4>Story</h4>
-                  
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-05.png" alt="">
-                  </div>
-                  <h4>Fictional</h4>
-                  
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-06.png" alt="">
-                  </div>
-                  <h4>Romance</h4>
-                  
-                </div>
-              </div>
+            @endforeach
             </div>
           </div>
         </div>

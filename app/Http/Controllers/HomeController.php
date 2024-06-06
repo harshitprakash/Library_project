@@ -15,9 +15,9 @@ class HomeController extends Controller
     //
     public function index()
     {
-        
+        $categories=Category::all();
         $books=Books::all();
-        return view('home.index',compact('books'));
+        return view('home.index',compact('books','categories'));
     }
     public function borrow_book($id)
     {
@@ -75,16 +75,18 @@ class HomeController extends Controller
 
     public function book_search(Request $request)
     {
+        $categories=Category::all();
         $search= $request->search;
         $books=Books::where('title','LIKE','%'.$search.'%')->orWhere('author_name','LIKE','%'.$search.'%')->get();
-        return view('home.explore',compact('books'));
+        return view('home.explore',compact('books','categories'));
     }
 
     public function cat_search($id)
     {   
         $categories=Category::all();
+        $selectedCategory = Category::findOrFail($id);
         $books=Books::where('category_id',$id)->get();
-        return view('home.explore',compact('books','categories'));
+        return view('home.explore',compact('books','categories','selectedCategory'));
 
     }
 

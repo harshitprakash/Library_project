@@ -201,9 +201,7 @@ pre {
 
 .block {
   padding: 20px;
-  background: #2d3035;
   color: #8a8d93;
-  margin-bottom: 30px;
 }
 
 .card {
@@ -979,6 +977,9 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
     position: absolute;
     top: 88%;
     left: 50%;
+  }
+  nav#sidebar a[aria-expanded="true"]::after {
+    content: '\f106';
   }
   nav#sidebar a[aria-expanded="true"]::after {
     content: '\f106';
