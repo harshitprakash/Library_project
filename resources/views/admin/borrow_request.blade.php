@@ -65,20 +65,14 @@
                             <td>
                                 @if($borrow->status == 'Applied')
                            
-                                <a href="{{route('approve.book',$borrow->id)}}" class="btn btn-success">Approved</a>
-                                <a href="{{route('reject.book',$borrow->id)}}" class="btn btn-danger">Rejected</a>
+                                <a href="{{route('approve.book',$borrow->id)}}" class="btn btn-outline-success">Approved</a>
+                                <a href="{{route('reject.book',$borrow->id)}}" class="btn btn-outline-warning">Rejected</a>
                                 
                                 @endif
 
                                 @if($borrow->status == 'Approved')
                                 
-                                    <a href="{{route('returned.book',$borrow->id)}}" class="btn btn-info">Returned</a>
-                                
-                                @endif
-
-                                @if($borrow->status == 'Rejected'||$borrow->status == 'Returned')
-                                
-                                    <a href="{{route('delete.request',$borrow->id)}}" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('returned.book',$borrow->id)}}" class="btn btn-outline-info">Returned</a>
                                 
                                 @endif
                             </td>
@@ -86,6 +80,10 @@
                     </tbody>
                     @endforeach
                     </table>
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $data->onEachSide(1)->links() }}
+
                 </div>
             </div>
 </div>

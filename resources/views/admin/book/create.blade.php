@@ -28,7 +28,7 @@
                         </div>
                         <div class="mb-3 col-sm-6">
                             <label for="exampleInputPassword1" class="form-label">Select category</label>
-                            <select name="category_id" class="form-control bg-white" required >
+                            <select name="category_id" class="form-control" required >
                                 <option value="">Select Category</option>
                                 @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->cat_title}}</option>
@@ -37,15 +37,15 @@
                         </div>
                         <div class="mb-3 col-sm-12">
                             <label for="exampleInputPassword1" class="form-label">Description</label>
-                            <textarea class="form-control  bg-white" name="description" placeholder="Add description" id=""></textarea>
+                            <textarea class="form-control" name="description" placeholder="Add description" id=""></textarea>
                         </div>
                         <div class="mb-3 col-sm-6">
-                            <label for="exampleInputPassword1" class="form-label">Book Image</label>
-                            <input type="file" class="form-control" name="book_img">
+                            <label for="exampleInputPassword1" class="form-label">Book Image</label><br>
+                            <input type="file" class="" name="book_img">
                         </div>
                         <div class="mb-3 col-sm-6">
-                             <label for="exampleInputPassword1" class="form-label">Author Image</label>
-                            <input type="file" class="form-control" name="author_img" >
+                             <label for="exampleInputPassword1" class="form-label">Author Image</label><br>
+                            <input type="file" class="" name="author_img" >
                         </div>
                         
                     </div>

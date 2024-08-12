@@ -16,7 +16,7 @@ class BorrowController extends Controller
     public function index()
     {
         //
-        $data=Borrow::with('book')->get();
+        $data=Borrow::with('book')->paginate(10);
         return view('admin.borrow_request',compact('data'));
     }
 
@@ -193,8 +193,6 @@ class BorrowController extends Controller
     public function destroy(string $id)
     {
         //
-        $borrow=Borrow::find($id);
-        $borrow->delete();
-        return redirect()->back()->with('message','Request Delete successfully');
+       
     }
 }

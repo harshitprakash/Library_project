@@ -14,7 +14,7 @@ class BookController extends Controller
     public function index()
     {
         //
-    $books=Books::all();
+    $books=Books::paginate(6);
     return view('admin.book.index',compact('books'));
     }
 
@@ -35,7 +35,7 @@ class BookController extends Controller
     {
         //
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|unique:books,title',
             'author_name' => 'required',
             'price' => 'required',
             'quantity' => 'required',
@@ -174,9 +174,27 @@ class BookController extends Controller
     public function destroy(string $id)
     {
         //
-        $books = Books::find($id);
-        $books ->delete();
-        return redirect()->back()->with('message','Book Delete successfully');
+         // Retrieve the book by ID
+    $book = Books::find($id);
 
+    // Check if the book exists
+    if ($book) {
+        // Check if the author's image file exists and delete it
+        if (File::exists(public_path($book->author_img))) {
+            File::delete(public_path($book->author_img));
+        }
+        if (File::exists(public_path($book->book_img))) {
+            File::delete(public_path($book->book_img));
+        }
+
+        // Delete the book record from the database
+        $book->delete();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('message', 'Book deleted successfully');
+    } else {
+        // If the book was not found, redirect back with an error message
+        return redirect()->back()->with('error', 'Book not found');
+    }
     }
 }

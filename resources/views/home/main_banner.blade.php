@@ -11,13 +11,13 @@
             </div>
           @endif
 
-        <div class="col-lg-6 align-self-center">
+        <div class="col-lg-6 col-12 align-self-center">
           <div class="header-text">
             <h6>Book is Knowledge</h6>
             <h2>Knowledge is Power</h2>
             <p>Library is a really cool and professional design for your websites. This HTML CSS template is based on Bootstrap v5 and it is designed for related web portals. Liberty can be freely downloaded from github</p>
             <div class="buttons">
-              <div class="border-button">
+            <div class="border-button">
                 <a href="explore.html">Explore Top Books</a>
               </div>
               <div class="main-button">

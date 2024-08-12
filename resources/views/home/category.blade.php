@@ -12,14 +12,14 @@
               </div>
             @foreach($categories as $category)
             
-              <div class="col-lg-2 col-sm-6">
+              <div class="col-lg-3 col-sm-6">
                 <div class="item">
                     <a href="{{ route('category.search', $category->id) }}">
                       <div class="icon">
                         <img src="assets/images/icon-01.png" alt="">
                       </div>
                       <h4>{{$category->cat_title}}</h4>
-                    </a>                  
+                    </a>
                 </div>
               </div>
             @endforeach

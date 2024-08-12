@@ -12,12 +12,12 @@
                             <button type="button" class="close" data-dismiss="alert">X</button>
                     </div>
                 @endif
-    </div>            
+    </div>
 
             <div class="card">
                 <div class="card-header">
                 </div>
-                <div class="card-body"> 
+                <div class="card-body" style="overflow-x:auto;"> 
                     <table class="table">
                     <thead>
                         <tr>
@@ -46,13 +46,17 @@
                             <td><img src="{{asset($book->author_img)}}" alt="" style="width:50px;height:50px;"></td>
                             <td>{{$book->category->cat_title}}</td>
                             <td>
-                                <a href="{{route('edit.book',$book->id)}}" class="btn btn-success  ">Update</a>
-                                <a onclick="confirmation(event)" href="{{route('delete.book',$book->id)}}" class="btn btn-danger  ">Delete</a>
+                                <a href="{{route('edit.book',$book->id)}}" class="btn btn-outline-success ">Update</a>
+                                <a onclick="confirmation(event)" href="{{route('delete.book',$book->id)}}" class="btn btn-outline-danger ">Delete</a>
                             </td>
                         </tr>
                     </tbody>
                     @endforeach
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                    {{ $books->onEachSide(1)->links() }}
+
+                    </div>
                 </div>
             </div>
 

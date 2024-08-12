@@ -22,7 +22,7 @@
                         <label for="exampleInputPassword1" class="form-label">Category</label>
                         <input type="text" class="form-control" name="cat_title" placeholder="Add Category">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-info">Submit</button>
                     </form>
                 </div>
             </div>         
@@ -30,28 +30,34 @@
                 <div class="card-header">
                 <h1>Category Title</h1>
                 </div>
+                
                 <div class="card-body"> 
-                    <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Categories</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    @foreach($categories as $category)
-                    <tbody>
-                        <tr>
-                            <th scope="row">{{$category->id}}</th>
-                            <td>{{$category->cat_title}}</td>
-                            <td>
-                                <a href="{{route('edit.category',$category->id)}}" class="btn btn-success  ">Update</a>
-                                <a onclick="confirmation(event)" href="{{route('delete.category',$category->id)}}" class="btn btn-danger  ">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                    @endforeach
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Categories</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                            @foreach($categories as $category)
+                            <tbody >
+                                <tr>
+                                    <th scope="row">{{$category->id}}</th>
+                                    <td>{{$category->cat_title}}</td>
+                                    <td>
+                                        <a href="{{route('edit.category',$category->id)}}" class="btn btn-outline-success ">Update</a>
+                                        <a onclick="confirmation(event)" href="{{route('delete.category',$category->id)}}" class="btn btn-outline-danger ">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            @endforeach
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                    {{ $categories->onEachSide(1)->links() }}
+
+                    </div>
+                    
                 </div>
             </div>
 

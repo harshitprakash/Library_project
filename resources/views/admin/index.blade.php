@@ -23,35 +23,37 @@
     <link rel="shortcut icon" href="{{asset('admin/img/favicon.ico')}}">
 
 
+
+
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
         
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 <body>
-<div class="">
+
   <div>
     @include('admin.header')
   </div>
-    <div class="d-flex align-items-stretch">
-      <!-- Sidebar Navigation-->
-      @include('admin.sidebar')
-      <!-- Sidebar Navigation end-->
-      @yield('title')
-      <div class="page-content">
-        <div class="page-header">
-          <div class="container-fluid">
-                @yield('content')
-              
-          </div>
+  <div class="d-flex align-items-stretch">
+    <!-- Sidebar Navigation-->
+    @include('admin.sidebar')
+    <!-- Sidebar Navigation end-->
+    <div class="page-content">
+      <div class="page-header">
+        <div class="container">
+              @yield('content')
+              @include('admin.footer')
+
         </div>
-      </div> 
-        
-      @include('admin.footer')
-</div> 
+      </div>
+    </div> 
+      
+  </div> 
+
+    
 <script type="text/javascript">
           function confirmation(event) {
               event.preventDefault();
@@ -73,8 +75,7 @@
           }
 
 </script>
-        
-      <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('admin/vendor/popper.js/umd/popper.min.js')}}"> </script>
     <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('admin/vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
@@ -82,5 +83,9 @@
     <script src="{{asset('admin/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('admin/js/charts-home.js')}}"></script>
     <script src="{{asset('admin/js/front.js')}}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   </body>
 </html>

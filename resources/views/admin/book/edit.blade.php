@@ -28,7 +28,7 @@
                         </div>
                         <div class="mb-3 col-sm-6">
                             <label for="exampleInputPassword1" class="form-label">Select category</label>
-                            <select name="category_id" class="form-control bg-white" required >
+                            <select name="category_id" class="form-control" required >
                                 <option>{{$book->category->cat_title}}</option>
                                 @foreach($categories as $category)
                                 <option value="{{ $category->id }}" @if($book->category_id === $category->id) selected @endif>{{$category->cat_title}}</option>
@@ -37,17 +37,17 @@
                         </div>
                         <div class="mb-3 col-sm-12">
                             <label for="exampleInputPassword1" class="form-label">Description</label>
-                            <textarea class="form-control  bg-white" name="description" id="">{{$book->description}}</textarea>
+                            <textarea class="form-control " name="description" id="">{{$book->description}}</textarea>
                         </div>
-                        <div class="mb-3 col-sm-6">
+                        <div class="mb-3 col-sm-12">
                         <img src="{{asset($book->book_img)}}" alt="" style="width:100px;height:100px;">
                             <label for="exampleInputPassword1" class="form-label">Update Book Image</label>
-                            <input type="file" class="form-control" name="book_img">
+                            <input type="file" class="mt-4" name="book_img">
                         </div>
-                        <div class="mb-3 col-sm-6">
+                        <div class="mb-3 col-sm-12">
                         <img src="{{asset($book->author_img)}}" alt="" style="width:100px;height:100px;">
                              <label for="" class="form-label">Update Author Image</label>
-                            <input type="file" class="form-control" name="author_img" >
+                            <input type="file" class="mt-4" name="author_img" >
                         </div>
                     
                     </div>
