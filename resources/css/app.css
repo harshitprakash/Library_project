@@ -22,16 +22,7 @@ body {
 
 
 }
-.py-4 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: black;
-}
 
-.pt-6 {
-    padding-top: 1.5rem;
-    background-color: #24222D;
-}
 .mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -57,7 +48,7 @@ body {
 }
 .text-gray-700 {
     --tw-text-opacity: 1;
-    color:white;
+    color: rgb(110 121 132);
 }
 .bg-gray-800 {
     --tw-bg-opacity: 1;
