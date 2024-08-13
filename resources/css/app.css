@@ -5,3 +5,61 @@
 [x-cloak] {
     display: none;
 }
+
+body {
+    margin: 0;
+    line-height: inherit;
+    background-color:#24222D;
+}
+.text-gray-900 {
+    --tw-text-opacity: 1;
+    color: rgb(110 121 132);
+}
+.border-gray-300 {
+    --tw-border-opacity: 1;
+    border-color: rgb(209 213 219 / var(--tw-border-opacity));
+    background-color: rgb(242, 246, 249);
+
+
+}
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: black;
+}
+
+.pt-6 {
+    padding-top: 1.5rem;
+    background-color: #24222D;
+}
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #24222D;
+}
+
+.text-gray-600 {
+    --tw-text-opacity: 1;
+    color: rgb(110 121 132);
+}
+.py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    background-color: #24222D;
+
+}
+
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: #24222D;
+
+}
+.text-gray-700 {
+    --tw-text-opacity: 1;
+    color:white;
+}
+.bg-gray-800 {
+    --tw-bg-opacity: 1;
+    background-color: #7453FC;
+}

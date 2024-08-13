@@ -79,7 +79,7 @@ https://templatemo.com/tm-577-liberty-market
                         <input type="text" class="form-control" name="search" placeholder="Search Here">
                     </div>
                     <div class="col-lg-2 col-4">
-                        <button class="btn btn-info form-control" type="submit" value="search">Search</button>
+                        <button class="btn btn-dark form-control" type="submit" value="search" style="background-color:#7453FC;">Search</button>
                     </div>
                     </div>
                 </form>
